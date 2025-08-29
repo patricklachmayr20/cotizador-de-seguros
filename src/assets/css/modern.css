@@ -1,0 +1,492 @@
+/* ===================================================================
+   MODERN CSS STYLES - Cotizador de Seguros
+   Estilos creativos y modernos para la aplicación mejorada
+   =================================================================== */
+
+/* ===================================================================
+   CSS CUSTOM PROPERTIES (Variables)
+   =================================================================== */
+:root {
+  /* Colores principales */
+  --primary-color: #00838f;
+  --primary-light: #26c6da;
+  --primary-dark: #006064;
+  --secondary-color: #ff6b35;
+  --accent-color: #ffd54f;
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, #26c6da 0%, #00838f 50%, #006064 100%);
+  --gradient-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  --gradient-dark: linear-gradient(135deg, #000428 0%, #004e92 100%);
+
+  /* Espaciado */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Tipografía */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  --shadow-glow: 0 0 20px rgba(38, 198, 218, 0.3);
+
+  /* Bordes */
+  --border-radius-sm: 6px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+  --border-radius-xl: 32px;
+
+  /* Transiciones */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+}
+
+/* ===================================================================
+   RESET Y BASE STYLES
+   =================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  background: var(--gradient-dark);
+  background-attachment: fixed;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+
+  /* Patrón de fondo sutil */
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+  background-size: 60px 60px;
+
+  /* Animación sutil del fondo */
+  animation: backgroundShift 20s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+}
+
+/* ===================================================================
+   CONTENEDOR PRINCIPAL
+   =================================================================== */
+#root {
+  padding: var(--spacing-md);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Efecto de partículas en el fondo */
+#root::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.1), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(38, 198, 218, 0.1), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 213, 79, 0.1), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 150px 100px;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(5px) rotate(-1deg);
+  }
+}
+
+/* ===================================================================
+   ELEMENTOS GENERALES
+   =================================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===================================================================
+   ANIMACIONES DE TRANSICIÓN MEJORADAS
+   =================================================================== */
+span.resultado {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+/* Entrada de resultados */
+.resultado-enter {
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  transition: all var(--transition-slow);
+}
+
+.resultado-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Salida de resultados */
+.resultado-exit {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all var(--transition-slow);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.resultado-exit-active {
+  opacity: 0;
+  transform: translateY(-30px) scale(0.9);
+}
+
+/* ===================================================================
+   ANIMACIONES PERSONALIZADAS
+   =================================================================== */
+@keyframes slideInUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(38, 198, 218, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(38, 198, 218, 0.8),
+      0 0 30px rgba(38, 198, 218, 0.4);
+  }
+}
+
+/* ===================================================================
+   CLASES UTILITARIAS
+   =================================================================== */
+.animate-slide-up {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideInDown 0.6s ease-out;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-fade-scale {
+  animation: fadeInScale 0.5s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* ===================================================================
+   EFECTOS HOVER MODERNOS
+   =================================================================== */
+.hover-lift {
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-glow {
+  transition: all var(--transition-normal);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow);
+  transform: scale(1.02);
+}
+
+.hover-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.hover-shimmer:hover::before {
+  left: 100%;
+}
+
+/* ===================================================================
+   GLASS MORPHISM EFFECTS
+   =================================================================== */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-md);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-md);
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+   =================================================================== */
+@media (max-width: 768px) {
+  #root {
+    padding: var(--spacing-sm);
+  }
+
+  :root {
+    --font-size-3xl: 1.75rem;
+    --font-size-2xl: 1.25rem;
+    --spacing-2xl: 2rem;
+    --spacing-3xl: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-3xl: 1.5rem;
+    --font-size-2xl: 1.125rem;
+    --spacing-xl: 1.25rem;
+    --spacing-2xl: 1.5rem;
+  }
+}
+
+/* ===================================================================
+   DARK MODE SUPPORT (opcional)
+   =================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #ffffff;
+    --text-color-muted: #a0a0a0;
+    --bg-color: #1a1a1a;
+  }
+}
+
+/* ===================================================================
+   REDUCED MOTION SUPPORT
+   =================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  body::before {
+    animation: none;
+  }
+}
+
+/* ===================================================================
+   PRINT STYLES
+   =================================================================== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
+/* ===================================================================
+   SCROLLBAR PERSONALIZADO (Webkit)
+   =================================================================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 4px;
+  transition: background var(--transition-normal);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* ===================================================================
+   FOCUS VISIBLE PARA ACCESIBILIDAD
+   =================================================================== */
+*:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
